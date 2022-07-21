@@ -5,12 +5,6 @@ const next = document.querySelector("#next");
 let limit = 5;
 let offset = 1;
 
-next.addEventListener("click", () => {
-  offset += 9;
-  removeChildNodes(pokemonContainer);
-  fetchPokemons(offset, limit);
-});
-
 function fetchPokemon(id) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
     .then((res) => res.json())
@@ -22,6 +16,7 @@ function fetchPokemon(id) {
 
 function fetchPokemons(offset, limit) {
   spinner.style.display = "block";
+  offset = Math.floor(Math.random() * 150);
   for (let i = offset; i <= offset + limit; i++) {
     fetchPokemon(i);
   }
@@ -111,9 +106,3 @@ function removeChildNodes(parent) {
 }
 
 fetchPokemons(offset, limit);
-
-window.onload = () =>{
-  setTimeout (()=>{
-    next.addEventListener
-  })
-}
